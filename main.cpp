@@ -4,6 +4,16 @@
 
 using namespace std;
 
+string reverse_text(string text){
+    string cipher = "";
+    int size = text.size();
+
+    for(int i = (size-1); i >= 0; i--){
+        cipher += text[i];
+    }
+    return cipher;
+}
+
 string caeser_cipher(string text, int key)
 {
     string result = "";
@@ -41,6 +51,7 @@ string atbash(string text)
     return result;
 }
 
+
 int main()
 {
     while(true){
@@ -61,18 +72,44 @@ int main()
         if(choice == 'a' || choice == 'A'){
              system("cls");
             cout<<"\n\nCaeser Cipher\n\n";
+            cout<<"Select one of the options:\n";
+            cout<<"1. Encryption\n";
+            cout<<"2. Decryption\n";
+            cout<<"3. Back";
 
-            cout<<"Enter the key:";
-            int key; cin>>key;
-            cin.clear(); cin.ignore();
+            int choice; cin>>choice;
+            if(choice == 1){
+                cout<<"Encrypt Message\n";
+                cout<<"Enter the key:";
+                int key; cin>>key;
+                cin.ignore();
 
-            cout<<"Enter a message:";
-            string message; 
-            getline(cin, message);
+                cout<<"Enter a message:";
+                string message; 
+                getline(cin, message);
 
-            string cipher = caeser_cipher(message, key);
+                string cipher = caeser_cipher(message, key);
+                cout<<"The Cipher text is: "<< cipher<<endl;
+            }else if(choice == 2){
+                cout<<"Decrypt Message\n";
+                cout<<"Enter the key:";
+                int key; cin>>key;
+                cin.ignore();
 
-            cout<<"The Cipher text is: "<< cipher<<endl;
+                cout<<"Enter a message:";
+                string message; 
+                getline(cin, message);
+                string text = decrypt(message, key);
+
+                cout<<"The text is: "<< text<<endl;
+            }else if(choice == 3){
+               
+            }
+
+
+
+
+          
             system("pause");
 
 
@@ -82,6 +119,9 @@ int main()
         }else if(choice == 'c' || choice == 'C'){
              system("cls");
             cout<<"\n\nReverse Cipher\n\n";
+            cout<<"Enter text to encrpt using reverse cipher";
+            string text; cin>>text;
+            cout<<reverse_text(text);
         }else if(choice == 'd' || choice == 'D'){
              system("cls");
             cout<<"\n\nROT13 Cipher\n\n";
