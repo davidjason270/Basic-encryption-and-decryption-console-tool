@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 string caeser_cipher(string text, int key)
 {
     string result = "";
@@ -41,7 +40,6 @@ string atbash(string text)
     }
     return result;
 }
-
 
 int main()
 {
