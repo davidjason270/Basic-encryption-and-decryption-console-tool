@@ -51,6 +51,21 @@ string atbash(string text)
     return result;
 }
 
+string rot13(string text)
+{
+    string result = "";
+    for(char c : text){
+
+        if(isalpha(c)){
+            char base = 'a';
+            result += (c - base + 13) % 26 + base;
+        }else{
+            result += c;
+        }
+    }
+    return result;
+}
+
 
 int main()
 {
@@ -115,16 +130,41 @@ int main()
 
         }else if(choice == 'b' || choice == 'B'){
              system("cls");
-            cout<<"\n\nAtBash Cipher\n\n";
+             cout<<"\n----------------------------\n\tAtBash Cipher\n----------------------------------------\n";
+            
+            //1. input variable
+            string text;
+            //2. ask the user
+            cout<<"Enter text to Encrypt / Decrypt\n";
+            //3. clear the input buffer and allow the user to enter
+            cin.ignore();
+            getline(cin, text);
+            //encrypt / decrpt using atbash function 
+            string cipher = atbash(text);
+            //display result
+            cout<<"\n The output is :"<<cipher<<endl;
+            system("pause");
         }else if(choice == 'c' || choice == 'C'){
              system("cls");
             cout<<"\n\nReverse Cipher\n\n";
             cout<<"Enter text to encrpt using reverse cipher";
-            string text; cin>>text;
+            cin.ignore();
+            string text; getline(cin,text);
             cout<<reverse_text(text);
+            system("pause");
+
         }else if(choice == 'd' || choice == 'D'){
-             system("cls");
+            system("cls");
             cout<<"\n\nROT13 Cipher\n\n";
+            cout<<"Enter the message to Encrypt using ROT13\n";
+            string input; 
+            cin.ignore();
+            getline(cin,input);
+            string cipher = rot13(input);
+
+            cout<<"The Cipher is: "<<cipher<<endl;
+            system("pause");
+
         }else if(choice == 'e' || choice == 'E'){
              system("cls");
             cout<<"\n\nGOOD BYE!\n\n";
